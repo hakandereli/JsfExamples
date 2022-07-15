@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+/**
+ *
+ * @author Hakan Dereli
+ */
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <title>ResourceBundle Example</title>
+            <link href="../../../resources/css/style.css" rel="stylesheet"/>
+        </h:head>
+        <h:body>
+            <div class="mainDiv">
+            <h1 aling="center">Resource Bundle Example</h1>
+                <f:loadBundle basename="com.tr.jsfexamples.settings.messages" var="msg"/>
+                <ol>
+                    <li><h:outputText value="#{msg.message}"/></li>
+                    <li><h:outputText value="#{msg['message.color']}"/></li>
+                    <li>
+                        <h:outputFormat value="#{msg['message.telephone.number']}">
+                            <f:param value="545"/>
+                            <f:param value="555 55 55 "/>
+                        </h:outputFormat>
+
+                    </li>
+                </ol>
+            </div>
+        </h:body>
+    </f:view>
+</html>

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>View Page</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+        <link href="../../../resources/css/tableStyle.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+         <h1 align="center">View </h1>
+         
+         <div class="mainDiv">
+             
+             Noktadan sonra ki hassasiyet <br/>
+             
+             <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                 <f:convertNumber minFractionDigits="1"/>
+             </h:outputText>
+             <br/>
+
+             <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber minFractionDigits="5"/>
+            </h:outputText>
+            <br/>
+            <hr/>
+            
+            Formatlama:<br/>
+            
+             <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber pattern="#0.0"/>
+            </h:outputText>
+            <br/>
+            
+             <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber pattern="#0.00"/>
+            </h:outputText>
+            <br/>
+            <hr/>
+            
+            Sayısal Format<br/>
+            <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber type="number"/>
+            </h:outputText>
+            <br/>
+            <hr/>
+            
+            Para<br/>
+            <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber currencyCode="TRL" type="currency"/>
+            </h:outputText>
+            <br/>
+            
+            <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber currencyCode="USD" type="currency"/>
+            </h:outputText>
+            <br/>
+            <hr/>
+            
+            Para Symbol<br/>
+            <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber currencySymbol="£" type="currency"/>
+            </h:outputText>
+            <br/>
+            
+            <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber currencySymbol="$" type="currency"/>
+            </h:outputText>
+            <br/>
+            <hr/>
+            
+            Yüzdelik Format:<br/>
+            <h:outputText value="#{convertersManagedBean.urunFiyati}">
+                <f:convertNumber type="percent"/>
+            </h:outputText>
+            
+            <br/><br/><br/><br/><br/><hr/>
+         
+            Son Kullanma Tarihi:<br/>
+            <h:outputText value="#{convertersManagedBean.sonKullanmaTarihi}">
+                <f:convertDateTime pattern="d/M/yyyy"/>
+            </h:outputText><br/><hr/>
+                
+            Son Kullanma Tarihi:<br/>
+            <h:outputText value="#{convertersManagedBean.sonKullanmaTarihi}">
+                <f:convertDateTime pattern="d.M.yyyy"/>
+            </h:outputText><br/><hr/>
+            
+            Son Kullanma Tarihi:<br/>
+            <h:outputText value="#{convertersManagedBean.sonKullanmaTarihi}">
+                <f:convertDateTime pattern="d-M-yyyy"/>
+            </h:outputText><br/><hr/>
+                     
+            Son Kullanma Tarihi:<br/><hr/>
+            <h:outputText value="#{convertersManagedBean.sonKullanmaTarihi}">
+            </h:outputText><br/>
+            
+            Son Kullanma Tarihi:<br/>
+            <h:outputText value="#{convertersManagedBean.sonKullanmaTarihi}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+            </h:outputText><br/><hr/>
+            
+            Ürün Url:<br/>
+            <h:outputText value="#{convertersManagedBean.urunUrl}"/>
+            <br/><hr/>
+                        
+            Satıcı E Posta<br/>
+            <h:outputText value="#{convertersManagedBean.saticiEposta}"/>
+            <br/><hr/>
+            
+            
+         </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">  
+    <h:head>  
+        <title>Ajax Update Example</title>  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>  
+        <div class="mainDiv">
+            <h1 aling="center">Ajax Update Example</h1>
+            <h:form>  
+                <p:panelGrid columns="2">  
+
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold" />  
+                    <p:inputText id="name" value="#{userManagedBean.name}" />
+
+                    <h:outputLabel for="lastname" value="LastName:" style="font-weight: bold"/>
+                    <p:inputText id="lastName" value="#{userManagedBean.lastName}" />
+
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Submit" update="displayName,displayLastName" icon="ui-icon-check" />
+
+                    <h:outputText id="displayName" value="#{userManagedBean.name}" />
+                    <h:outputText id="displayLastName" value="#{userManagedBean.lastName}" />  
+
+                </p:panelGrid>  
+            </h:form>  
+
+            <br/><hr/><br/>
+
+            <h:form>
+                <p:panelGrid columns="2">
+                    <h:outputLabel for="telephoneNumber" value="Telefon Numarası" />
+                    <p:inputText id="telephoneNumber" value="#{userManagedBean.telephoneNumber}">
+                        <!-- Text box ile çalıştırılır textboxdan çıkınca çalıştı-->
+                        <f:ajax execute="telephoneNumber" render="sonuc"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="Sonuç" for="sonuc"/>
+                    <h:outputText id="sonuc" value="#{userManagedBean.telephoneNumber}"/>
+
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Göster" type="button" onclick="PF('dlg3').show();">
+                        <f:ajax execute="telephoneNumber" render="popUpsonuc"/>
+                        <!-- button ile çalıştırılır-->
+                    </p:commandButton>
+                </p:panelGrid>
+
+                <p:dialog header="PopUp" widgetVar="dlg3" showEffect="fadeIn" hideEffect="fadeOut" height="100">
+                    <h:outputText id="popUpsonuc" value="#{userManagedBean.telephoneNumber}" />
+                </p:dialog>
+            </h:form>
+
+            <br/><hr/><br/>
+
+              <h:form prependId="false">
+                <p:panelGrid columns="2">
+                    <h:outputLabel for="age" value="Yaş"/>
+                    <p:inputText id="age" value="#{userManagedBean.age}"/>
+
+                    <p:commandButton value="+" action="#{userManagedBean.ageUp}">
+                        <!--<f:ajax execute="@form" render="agePrint"/>-->
+                        <f:ajax execute="@form" render="age"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="-" action="#{userManagedBean.ageDown}">
+                        <!--<f:ajax execute="@form" render="agePrint"/>-->
+                        <f:ajax execute="@form" render="age,"/>
+                    </p:commandButton>
+
+                </p:panelGrid>
+            </h:form>
+
+
+
+        </div>
+    </h:body> 
+</html>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Panel Example Login Page</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div class="mainDiv">
+            
+            <h1 id="baslik" align="center">Panel Example Login Page</h1>
+            
+            <h:form id="anketFormu">
+                
+                <h:panelGrid columns="3">
+                    <h:graphicImage value="/resources/images/login.png" style="width: 200px; height: 200px;"/>
+                    <h:outputLabel value="Giriş Yap" style="font-size: 50px"/>
+                    <h:outputLabel/>
+                    
+                    <h:outputLabel value="ADI: "/>
+                    <h:inputText value="#{userManagedBean.name}" required="true" id="adiTextBox" label="adi">
+                        <f:validateLength minimum="3"/>
+                    </h:inputText>
+                    <h:message for="adiTextBox" styleClass="colorRed"/>
+                
+                    <h:outputLabel value="SOYADI: "/>
+                    <h:inputText value="#{userManagedBean.lastName}" id="soyadiTextBox" required="true" label="soyadi"/>
+                    <h:message for="soyadiTextBox" styleClass="colorRed"/>
+
+                    <h:outputLabel value="TELEFON: "/>
+                    <h:inputText value="#{userManagedBean.telephoneNumber}" id="telTextBox" required="true" label="telefon no">
+                        <f:convertNumber/>
+                    </h:inputText>
+                    <h:message for="telTextBox" styleClass="colorRed"/>
+                    
+                    <h:outputLabel value="YAŞ "/>
+                    <h:inputText value="#{userManagedBean.age}" id="ageTextBox" required="true" label="yaş">
+                        <f:convertNumber/>
+                        <f:validateLongRange for="ageTextBox" minimum="18" maximum="150"/>
+                    </h:inputText>
+                    <h:message for="ageTextBox" styleClass="colorRed"/>
+
+                
+                    <f:facet name="footer">
+                        
+                        <h:panelGroup style="display:block;text-align:center">
+                            
+                            <h:commandButton type="reset" value="Temizle" style="width: 200px"/>
+                            
+                            <h:commandButton value="Gönder" action="#{userManagedBean.checkLoginControl()}" style="width: 200px">
+                                
+                                <f:param value="Bilgisayar Mühendisi" name="unvan"/>
+                                
+                            </h:commandButton>
+                            
+                        </h:panelGroup>
+                        
+                    </f:facet>
+                </h:panelGrid>
+                
+                
+                <h:messages/>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

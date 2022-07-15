@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Data Table Example</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+        <link href="../../../resources/css/tableStyle.css" rel="stylesheet"/>
+
+    </h:head>
+    <h:body>
+        <div class="mainDiv">
+            <h:form>
+                <!--<h1 id="baslik" align="center">Data Table Example</h1>-->
+                <h2 id="baslik" align="center">Yeni Personel</h2>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Numarası:"/>
+                    <h:inputText value="#{personelManagedBean.numarasi}"/>
+
+                    <h:outputLabel value="Adı:"/>
+                    <h:inputText value="#{personelManagedBean.adi}"/>
+
+                    <h:outputLabel value="Soyadı:"/>
+                    <h:inputText value="#{personelManagedBean.soyadi}"/>
+
+                    <h:outputLabel value="Yaşı"/>
+                    <h:inputText value="#{personelManagedBean.yasi}"/>
+
+                    <h:outputLabel value="Maaşı:"/>
+                    <h:inputText value="#{personelManagedBean.maasi}"/>
+
+                    <h:commandButton type="reset" value="Temizle"/>
+                    <h:commandButton type="submit" value="Ekle" action="#{personelManagedBean.add}"/>
+                </h:panelGrid>
+
+                <hr/>
+
+                <h2 id="baslik" align="center">Personel Listele</h2>
+                <h:dataTable value="#{personelManagedBean.personelListesi}"
+                             var="p"
+                             styleClass="personel-tablo"
+                             headerClass="personel-tablo-baslik"
+                             rowClasses="personel-tablo-tek-satir , personel-tablo-cift-satir">
+                    <h:column>
+                        <f:facet name="header">
+                                NUMARASI
+                        </f:facet>
+                        <h:inputText value="#{p.numarasi}" size="10" rendered="#{p.editable}"/>
+                        <h:outputText value="#{p.numarasi}" rendered="#{not p.editable}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:commandLink action="#{personelManagedBean.orderByPersonelAdi()}" class="sutunBasligi">
+                                <h:graphicImage value="/resources/images/arrows.png" width="25" height="25"/>
+                                ADI
+                            </h:commandLink>
+                        </f:facet>
+                        <h:inputText value="#{p.adi}" size="10" rendered="#{p.editable}"/>
+                        <h:outputText value="#{p.adi}" rendered="#{not p.editable}"/>
+
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                                SOYADI
+                        </f:facet>
+                        <h:inputText value="#{p.soyadi}" size="10" rendered="#{p.editable}"/>
+                        <h:outputText value="#{p.soyadi}" rendered="#{not p.editable}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                                YAŞ
+                        </f:facet>
+                        <h:inputText value="#{p.yasi}" size="10" rendered="#{p.editable}"/>
+                        <h:outputText value="#{p.yasi}" rendered="#{not p.editable}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                                MAAŞI
+                        </f:facet>
+                        <h:inputText value="#{p.maasi}" size="10" rendered="#{p.editable}"/>
+                        <h:outputText value="#{p.maasi}" rendered="#{not p.editable}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header"></f:facet>
+                        <h:commandLink action="#{personelManagedBean.delete(p)}">
+                            <h:graphicImage value="/resources/images/delete.png" width="25" height="25"/>
+                        </h:commandLink>
+                    </h:column>
+
+                    
+                    <h:column>
+                        <f:facet name="header"></f:facet>
+                        <h:commandLink action="#{personelManagedBean.setEditable(p)}" rendered="#{not p.editable}">
+                            <h:graphicImage value="/resources/images/edit.png" width="25" height="25"/>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{personelManagedBean.update(p)}" rendered="#{p.editable}">
+                            <h:graphicImage value="/resources/images/save.png" width="25" height="25"/>
+                        </h:commandLink>
+                      
+                    </h:column>
+            </h:dataTable>
+
+                
+                
+                <br/><br/><br/><br/>
+                <h2 id="baslik" align="center">ui:repeat kullanımı</h2>
+                <table>
+                    <ui:repeat value="#{personelManagedBean.personelListesi}" var="x" varStatus="durum">
+                        <tr>
+                            <td>#{x.numarasi}</td>
+                            <td>#{x.adi}</td>
+                            <td>#{x.soyadi}</td>
+                            <td>#{x.yasi}</td>
+                            <td>#{x.maasi}</td>
+                        </tr>
+                    </ui:repeat>
+                </table>
+        </h:form>
+    </div>
+</h:body>
+</html>
+

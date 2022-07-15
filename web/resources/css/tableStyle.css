@@ -1,0 +1,18 @@
+
+.personel-tablo-baslik{
+    text-align: center;
+    background: none repeat scroll 0 0 blanchedalmond;
+    padding: 15px;
+}
+
+.personel-tablo-tek-satir{
+    text-align: left;
+    background: none repeat scroll 0 0 dodgerblue;
+
+}
+
+.personel-tablo-cift-satir{
+    text-align: left;
+    background: none repeat scroll 0 0 lightgoldenrodyellow;
+
+}

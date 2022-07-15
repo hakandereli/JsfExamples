@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Anket</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div class="mainDiv">
+            <h1 id="baslik" align="center">Anket</h1>
+        <h:graphicImage value="/resources/images/anket.png" id="anketImg" width="250px" height="250px"/>
+        <h:form id="anketFormu">
+            <table cellpadding="10" cellspacing="10">
+               <tr>
+                   <td><h:outputLabel for="adi">Adı: </h:outputLabel></td>
+                   <td>
+                       <h:inputText id="adi" value="#{katilimciBean.ad}" required="true" label="Ad Yanlış Girildi!">
+                           <f:validateLength minimum="5" maximum="100"/>
+                       </h:inputText>
+                   </td>
+                   <td>
+                       <h:message for="adi" style="color: red;"/>
+                   </td>
+               </tr>
+
+               <tr>
+                   <td><h:outputLabel for="soyadi">Soyadı: </h:outputLabel></td>
+                   <td><h:inputText id="soyadi" value="#{katilimciBean.soyAd}"/></td>
+               </tr>
+
+               <tr>
+                   <td><h:outputLabel for="parola">Parola: </h:outputLabel></td>
+                   <td><h:inputSecret id="parola" value="#{katilimciBean.parola}"/></td>
+               </tr>
+               
+                <tr>
+                   <td><h:outputLabel for="gizlibilgi">Gizli Bilgi </h:outputLabel></td>
+                   <td><h:inputHidden id="gizlibilgi" value="#{katilimciBean.gizliBilgi}"/></td>
+               </tr>
+               
+               <tr>
+                   <td><h:outputLabel for="aciklama">Açıklama: </h:outputLabel></td>
+                   <td><h:inputTextarea id="aciklama" value="#{katilimciBean.aciklama}" rows="10" cols="21"/></td>
+               </tr>
+               
+                <tr>
+                    <td><h:outputLabel for="aciklama">Onay</h:outputLabel></td>
+                   <td>
+                       <h:selectBooleanCheckbox id="sozlesmeOnayi" value="#{katilimciBean.sozlesmeOnay}"/>
+                   </td>
+               </tr>
+               
+                <tr>
+                    <td><h:outputLabel for="hobileriniz">Hobiler</h:outputLabel></td>
+                   <td>
+                       <h:selectManyCheckbox id="hobileriniz" value="#{katilimciBean.hobiler}">
+                           <f:selectItem itemValue="Müzik" itemLabel="Müzik"/>
+                           <f:selectItem itemValue="Kitap" itemLabel="Kitap"/>
+                           <f:selectItem itemValue="Kaykay" itemLabel="Kaykay"/>
+                           <f:selectItem itemValue="Doğa Yürüyüşü" itemLabel="Doğa Yürüyüşü"/>
+                           <f:selectItem itemValue="Bisiklet" itemLabel="Bisiklet"/>
+                       </h:selectManyCheckbox>
+                   </td>
+               </tr>
+               
+                <tr>
+                    <td><h:outputLabel for="ehliyetTurleri">Ehliyet Türleri</h:outputLabel></td>
+                   <td>
+                       <h:selectManyCheckbox id="ehliyetTurleri" value="#{katilimciBean.ehliyetTurleri}">
+                           <f:selectItems value="#{katilimciBean.ehliyetTurleriValues}"/>
+                       </h:selectManyCheckbox>
+                   </td>
+               </tr>
+               
+                <tr>
+                    <td><h:outputLabel for="cinsiyet">Cinsiyet</h:outputLabel></td>
+                   <td>
+                       <h:selectOneRadio id="cinsiyet" value="#{katilimciBean.cinsiyet}">
+                           <f:selectItem itemValue="ERKEK" itemLabel="Bay"/>
+                           <f:selectItem itemValue="KIZ" itemLabel="Bayan"/>
+                       </h:selectOneRadio>
+                   </td>
+               </tr>
+                               
+                <tr>
+                    <td><h:outputLabel for="Ders">Ders</h:outputLabel></td>
+                   <td>
+                       <h:selectOneRadio id="Ders" value="#{katilimciBean.ders}">
+                           <f:selectItems value="#{katilimciBean.dersAdlariniAl()}"/>
+                       </h:selectOneRadio>
+                   </td>
+               </tr>
+                
+                <tr>
+                    <td><h:outputLabel for="egitmen">Eğitmen</h:outputLabel></td>
+                   <td>
+                       <h:selectOneRadio id="egitmen" value="#{katilimciBean.egitmen}">
+                           <f:selectItems value="#{katilimciBean.egitmenBilgileriAl}"
+                                          var="e"
+                                          itemLabel="#{e.egitmenAdi}"
+                                          itemValue="#{e.egitmenNo}"/>
+                       </h:selectOneRadio>
+                   </td>
+               </tr>
+                
+                <tr>
+                    <td><h:outputLabel for="sigara">Sigara: </h:outputLabel></td>
+                   <td>
+                       <h:selectOneRadio id="sigara" value="#{katilimciBean.sigara}">
+                           <f:selectItem itemLabel="Kullanılıyor" itemValue="yes"/>
+                           <f:selectItem itemLabel="Kullanmıyor" itemValue="no"/>
+
+                       </h:selectOneRadio>
+                   </td>
+               </tr>
+                
+                <tr>
+                    <td><h:outputLabel for="yabanciDil">Yabancı Dil: </h:outputLabel></td>
+                   <td>
+                       <h:selectManyListbox id="yabanciDil" value="#{katilimciBean.yabanciDil}">
+                           <f:selectItem itemLabel="İngilizce" itemValue="en"/>
+                           <f:selectItem itemLabel="Türkçe" itemValue="tr"/>
+                       </h:selectManyListbox>
+                   </td>
+               </tr>
+                
+                
+                <tr>
+                    <td><h:outputLabel for="egitimDurumu">Eğitim Durumu: </h:outputLabel></td>
+                   <td>
+                       <h:selectOneMenu id="egitimDurumu" value="#{katilimciBean.egitimDurumu}">
+                           <f:selectItems value="#{katilimciBean.egitimDurumlariGetir()}"/>
+                       </h:selectOneMenu>
+                   </td>
+               </tr>
+
+               <tr>
+                   <td><h:commandButton type="reset" value="Temizle" style="width:180px; height:30px; "/></td>
+                   <td><h:commandButton type="submit" id="anketGonderButon" action="KatilimciBilgileriGoster" value="Gönder" style="width:180px; height:30px;"/></td>
+               </tr>
+           </table>
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

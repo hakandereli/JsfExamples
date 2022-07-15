@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Elde Edilen Veriler</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <h1 align="center">Ankete Girilen Bilgiler</h1>
+        <div class="mainDiv">
+            <table  cellpadding="10" cellspacing="10">
+                <tr>
+                   <td><h:outputLabel for="adi">Adı: </h:outputLabel></td>
+                    <td><h:outputText id="adi" value="#{katilimciBean.ad}"/></td>
+                </tr>
+
+                <tr>
+                    <td><h:outputLabel for="soyadi">Soyadı: </h:outputLabel></td>
+                    <td><h:outputText id="soyadi" value="#{katilimciBean.soyAd}"/></td>
+                </tr>
+
+                <tr>
+                   <td><h:outputLabel for="parola">Parola: </h:outputLabel></td>
+                    <td><h:outputText id="parola" value="#{katilimciBean.parola}"/></td>
+                </tr>
+
+
+                <tr>
+                    <td><h:outputLabel for="gizlibilgi">Gizli Bilgi: </h:outputLabel></td>
+                    <td><h:outputText id="gizlibilgi" value="#{katilimciBean.gizliBilgi}"/></td>
+                </tr>
+
+                <tr>
+                    <td><h:outputLabel for="aciklama">Açıklama: </h:outputLabel></td>
+                    <td> <h:outputText id="aciklama" value="#{katilimciBean.aciklama}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="sozlesmeOnayi">Kullanım Sözleşmesi Onaylandı Mı? </h:outputLabel></td>
+                    <td> <h:outputText id="sozlesmeOnayi" value="#{katilimciBean.sozlesmeOnay}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="hobiler">Hobiler: </h:outputLabel></td>
+                     <td> <h:outputText id="hobiler" value="#{katilimciBean.hobilerString}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="ehliyet">Ehliyet: </h:outputLabel></td>
+                     <td> <h:outputText id="ehliyet" value="#{katilimciBean.ehliyetTurleriStrings}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="cinsiyet">Cinsiyet: </h:outputLabel></td>
+                     <td> <h:outputText id="cinsiyet" value="#{katilimciBean.cinsiyet}"/></td>
+                </tr>
+
+
+                <tr>
+                     <td><h:outputLabel for="ders">Ders: </h:outputLabel></td>
+                     <td> <h:outputText id="ders" value="#{katilimciBean.ders}"/></td>
+                </tr>
+
+
+                <tr>
+                     <td><h:outputLabel for="egitmen">Eğitmen: </h:outputLabel></td>
+                     <td> <h:outputText id="egitmen" value="#{katilimciBean.egitmen}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="sigara">Sigara: </h:outputLabel></td>
+                     <td> <h:outputText id="sigara" value="#{katilimciBean.sigara}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="yabanciDil">Yabancı Dil </h:outputLabel></td>
+                     <td> <h:outputText id="yabanciDil" value="#{katilimciBean.dilDegerleriniAl()}"/></td>
+                </tr>
+
+                <tr>
+                     <td><h:outputLabel for="egitimDurumu">Eğitim Durumu </h:outputLabel></td>
+                     <td><h:outputText id="egitimDurumu" value="#{katilimciBean.egitimDurumu}"/></td>
+                </tr>
+            </table>
+        </div>
+    </h:body>
+
+</html>
+

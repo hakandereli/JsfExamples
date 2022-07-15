@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Button Examples</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        
+        <!--
+        
+               Outcome özelliği url i değiştirmektedir.
+        
+               action özelliği ise url i değiştirmemektedir.
+        
+        -->
+        
+        <h1 align="center">Button Examples</h1>
+        <div class="mainDiv">
+            <h:commandButton type="submit" value="Ankete Yönlendir Command Button Form Kullanmadan" action="#{yonlendirManagedBean.anketeYonlendir()}"/>
+            <br />
+            <br />
+            
+            <h:button value="Button" outcome="#{yonlendirManagedBean.anketeYonlendir()}"/>
+            <br />
+            <br />
+            
+            <h:link outcome="#{yonlendirManagedBean.anketeYonlendir()}" value="Anket" />
+            <br />
+            
+            
+            <h:link outcome="#{yonlendirManagedBean.anketeYonlendir()}" value="Anket Parametreli Git">
+                <f:param name="sehir" value="Istanbul"/>
+                <f:param name="tarih" value="17.06.2022"/>
+            </h:link>
+            
+            <h:link style="height: 250px;" outcome="#{yonlendirManagedBean.anketeYonlendir()}">
+                <h:graphicImage value="/resources/images/anket.png" id="anketImg" width="250px" height="250px"/>
+                <f:param name="sehir" value="Istanbul"/>
+            </h:link>
+            
+            <h:form>
+                <h:commandButton type="submit" value="Ankete Yönlendir Command Button URL DİKKAT" action="#{yonlendirManagedBean.anketeYonlendir()}"/>
+                <br />
+                <br />
+                
+                <h:button value="Button Outcome URL DİKKKAT" outcome="#{yonlendirManagedBean.anketeYonlendir()}"/>
+                <br />
+                <br />
+                
+                <h:commandButton type="reset" value="Temizle" onclick="alert('Deneme');"/>
+                <br />
+                <br />
+                
+                <h:commandButton type="button" value="Ankete Yönlendir Command Button" action="#{yonlendirManagedBean.anketeYonlendir()}"/>
+                <br />
+                <br />
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

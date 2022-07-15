@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Converters Example</title>
+        <link href="../../../resources/css/style.css" rel="stylesheet"/>
+        <link href="../../../resources/css/tableStyle.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div class="mainDiv">
+            <h:form>
+                <h2 id="baslik" align="center">Converters Example</h2>
+                
+                <h:panelGrid columns="2">
+                 
+                    <h:outputLabel value="Ürün Fiyatı:"/>
+                    <h:inputText id="urunFiyati" required="true" label="Ürün Fiyatı" value="#{convertersManagedBean.urunFiyati}">
+                        <f:convertNumber minFractionDigits="4"/>
+                    </h:inputText>
+                    
+                    <h:outputLabel value="Son Kullanma Tarihi:"/>
+                    <h:inputText id="skt" value="#{convertersManagedBean.sonKullanmaTarihi}" size="20" required="true" label="Son Kullanma Tarihi">
+                        <f:convertDateTime pattern="d/M/yyyy"/>
+                    </h:inputText>
+                    
+                    <h:outputLabel value="Ürün URL"/>
+                    <h:inputText id="urunUrl" value="#{convertersManagedBean.urunUrl}" required="true">
+                        <f:converter converterId="com.tr.jsfexamples.beans.SiteAdresiTanimlamaSinifi"/>
+                    </h:inputText>
+                    
+                    <h:outputLabel value="Satıcı E Posta"/>
+                    <h:inputText id="saticiEposta" label="Satıcı E posta" value="#{convertersManagedBean.saticiEposta}" required="true" validatorMessage="Geçersiz bir e posta girildi">
+                        <f:validateRegex pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"/>
+                    </h:inputText>
+                    
+                    <h:commandButton type="reset" value="Temizle" style="width:180px; height:20px; "/>
+                    <h:commandButton type="submit" value="Ekle" action="viewResult" style="width:180px; height:20px; "/>
+                
+                </h:panelGrid>
+                <h:message for="urunFiyati" style="color:red;"/>
+                <h:message for="skt" style="color:red;"/>
+                <h:message for="urunUrl" style="color:red;"/>
+                <h:message for="saticiEposta" style="color:red;"/>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
